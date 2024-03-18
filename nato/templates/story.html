@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stories</title>
+</head>
+<body>
+    <h1>All Stories</h1>
+    <ul>
+        {% for story in stories %}
+            <li>
+                <strong>{{ story.title }}</strong><br>
+                <p>{{ story.content }}</p>
+                <p>{{ story.created_at }}</p>
+                <form method="POST" action="{% url 'edit_story' story.id %}" style="display: inline;">
+                    {% csrf_token %}
+                    <button type="submit">Редактировать</button>
+                </form>
+                <form method="POST" action="{% url 'delete_story' %}" style="display: inline;">
+                    {% csrf_token %}
+                    <input type="hidden" name="story_id" value="{{ story.id }}">
+                    <button type="submit">Удалить</button>
+                </form>
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_story' %}">Добавить новую историю</a>
+</body>
+</html>

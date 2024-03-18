@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATO Сайт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+        .header {
+            position: relative;
+            background-image: url('https://www.atlanticcouncil.org/wp-content/uploads/2022/07/Page-6.jpg');
+            background-size: cover;
+            background-position: center;
+            color: #fff;
+            text-align: center;
+            padding: 100px 0;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); 
+        }
+        .header h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        .header p {
+            font-size: 1.2em;
+            margin-bottom: 40px;
+        }
+        .buttons {
+            text-align: center;
+            animation: fadeInUp 1s ease-out;
+        }
+        .button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            outline: none;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+        .button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 300%;
+            height: 300%;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 0;
+        }
+        .button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .button span {
+            position: relative;
+            z-index: 1;
+        }
+        .menu-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 20px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            border: none;
+            outline: none;
+        }
+        .menu-button:hover {
+            background-color: #0056b3;
+        }
+        .menu-button::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            width: 300%;
+            height: 300%;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%) scale(0);
+            z-index: 0;
+        }
+        .menu-button:hover::before {
+            transform: translate(-50%, -50%) scale(1);
+        }
+        .menu {
+            display: none;
+            margin-top: 20px;
+            animation: fadeInUp 1s ease-out;
+        }
+        .menu a {
+            display: block;
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-size: 18px;
+            margin: 10px;
+            transition: background-color 0.3s ease-in-out;
+            cursor: pointer;
+        }
+        .menu a:hover {
+            background-color: #0056b3;
+        }
+        .features {
+            text-align: center;
+            padding: 50px 0;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .feature {
+            width: 300px;
+            margin: 20px;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            background-color: #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+        .feature:hover {
+            transform: translateY(-10px);
+        }
+        .feature img {
+            max-width: 100px;
+            border-radius: 50%;
+        }
+        .feature h2 {
+            font-size: 1.5em;
+            margin-top: 20px;
+        }
+        .feature p {
+            font-size: 1.2em;
+        }
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        @media (max-width: 768px) {
+            .header {
+                padding: 50px 0;
+            }
+            .header h1 {
+                font-size: 2.5em;
+            }
+            .header p {
+                font-size: 1em;
+            }
+            .features {
+                padding: 30px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>NATO ning saytiga hush kelibsiz</h1>
+        <div class="buttons">
+            <a href="/members" class="button"><span>NATO aʼzolari</span></a>
+            <a href="/info_nato" class="button"><span>NATO haqida toliq...</span></a>
+            <a href="/news" class="button"><span>Yangiliklar</span></a>
+            <button class="menu-button" onclick="toggleMenu()"><span>&#9776;</span></button>
+            <div class="menu" id="menu">
+                <a href="/story_list">Natoning tarixi</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="features">
+        <div class="feature">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Flag_of_NATO.svg/1200px-Flag_of_NATO.svg.png" alt="NATO Logo">
+            <h2>Tashkilot maqsadi</h2>
+            <p>Shimoliy Atlantika shartnomasi ittifoqiga qoʻshilgan mamlakatlar 1949-yilda tinch aholini xavfsizligini mustahkamlash maqsadida oldilaridagi Shimoliy Atlantika doirasidagi davlatlar bilan birlashishgan. Ittifoqqa aʼzo mamlakatlar yaxlit mudofaa tizimini yaratish va dunyo xavfsizligini saqlashni oʻz oldilariga maqsad qilishgan. 2010-yilda NATO "Zamonaviy mudofaaning ilgʻor ishtiroki" ijtimoiy harakati uchta muhim vazifalarni taqdim etdi, bular: jamoaviy mudofaa, inqirozni oldini olish va hamkorlik asosida xavfsizlikni kuchaytirish./p>
+        </div>
+        <div class="feature">
+            <img src="https://avatars.mds.yandex.net/i?id=35ed2fea7e4d3732837b01dca3bf5986c97dbfce-10874712-images-thumbs&n=13" alt="Feature Image">
+            <h2>Tuzilishi</h2>
+            <p>NATO hozirgi kunda 30 mamlakatni oʻz ichiga olgan tashkilotdir. Ushbu tashkilot qamrovida yuzlab qoʻmitalar, guruhlar, xizmat boshqaruvlari yoki harbiylar va fuqarolar doirasi ostidagi rejalashtirish boʻlinmalari mavjud. Shuning bilan birga, tashkilot tarkibida mutahassislarni tayyorlash va tayyorgarlikdan oʻtkazish oʻquv markazlari faoliyat koʻrsatadi. NATO zarur qarorlar yoki choralar koʻrish shartnomalarini qabul qilish uchun mamlakat aʼzolarini ikki toifaga boʻladi — vositachilar[1] hamda zahiralar guruhlari. Uchrashuvlar oʻtkazish va boshqa vazifalar yechimlarini tashkilotga aʼzo mamlakatlarni umumjamoa qiziqishlari va tassavuroti jamlanmasiga nazar tashlagan holda koʻrib chiqadi. Doimiy barcha operatsiyalar oʻtkazilish uchun mablagʻlar, tashkilot ostidagi harbiylarga, zarar koʻrgan fuqarolarga NATO budjetidan pul ajratiladi. Moliyaviy holat jarayonda qatnashayotgan mamlakatlar bilan birgalikda hal qilinib, NATO xazinasi</p>
+        </div>
+        <div class="feature">
+            <img src="https://avatars.mds.yandex.net/i?id=58fbdb3eb03f042d5e770568787e2f526e2323c7-9843251-images-thumbs&ref=rim&n=33&w=480&h=300" alt="Feature Image">
+            <h2>Yuqori bosh qoʻmondonlik</h2>
+            <p>Yuqori bosh qoʻmondonlik organi NATO tashkiloti ichida barcha bajarilgan harbiy yurishlar va hududlardagi barqarorlikni saqlash uchun qatʼiy javobgardir. Bu organ javobgarlikni oʻz boʻyniga olgani bois NATOdagi siyosiy va harbiy savollarga javob berish hamda tegishli tavsiyalarni joriy etish huquqiga egadir. Yuqori bosh qoʻmondonlik organi bir vaqtning oʻzida aʼzo mamlakatlar bosh kotiblari taʼsiridan erkin holda ish yuritadi va milliy hokimiyatga tegishli barcha savollarga yechim topishga javobgardir.</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById("menu");
+            if (menu.style.display === "block") {
+                menu.style.display = "none";
+            } else {
+                menu.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
+
+

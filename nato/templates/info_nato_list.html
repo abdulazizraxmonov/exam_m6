@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATO haqida bracha malumot</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 80%;
+            background-color: #fff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #007bff;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: #f1f1f1;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-name {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .info-actions {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-transform: uppercase;
+            margin-left: 10px;
+        }
+
+        .details-btn {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        .edit-btn {
+            background-color: #28a745;
+            color: #fff;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+            color: #fff;
+        }
+
+        .add-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            margin-bottom: 20px;
+            display: block;
+            text-align: center;
+        }
+    </style>
+    
+</head>
+<body>
+    
+    <div class="container">
+        <h1>NATO haqida</h1>
+        <a href="{% url 'add_nato_info' %}" class="btn add-btn">Yagni Qoshish</a>
+        {% for info_nato in info_nato_list %}
+        <div class="info-item">
+            <div class="info-name">{{ info_nato.name }}</div>
+            <a href="{% url 'info_nato_detail' info_nato.id %}" class="btn details-btn">Batafsil</a>
+            <div class="info-actions">
+                <form method="post" action="{% url 'delete_nato_info' info_nato.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn delete-btn">Ochirish</button>
+                </form>
+                <a href="{% url 'edit_nato_info' info_nato.id %}" class="btn edit-btn">Ozgartirish</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>

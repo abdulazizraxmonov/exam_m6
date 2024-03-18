@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATO tarixi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        strong {
+            font-size: 20px;
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        .btn-container {
+            text-align: right;
+            margin-top: 10px;
+        }
+        .btn-container button, .add-btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 3px;
+            padding: 8px 16px;
+            margin-left: 10px;
+            cursor: pointer;
+            text-decoration: none; /* Added */
+            display: inline-block; /* Added */
+        }
+        .btn-container button:hover, .add-btn:hover {
+            background-color: #0056b3;
+        }
+        .add-btn {
+            background-color: #28a745;
+        }
+        .add-btn:hover {
+            background-color: #218838;
+        }
+        .edit-btn {
+            background-color: #ffc107;
+        }
+        .edit-btn:hover {
+            background-color: #d39e00;
+        }
+        .delete-btn {
+            background-color: #dc3545;
+        }
+        .delete-btn:hover {
+            background-color: #bd2130;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="btn-container">
+            <a class="add-btn" href="{% url 'add_story' %}">Yangi qoshish</a>
+        </div>
+        <h1>NATO barcha tarixi</h1>
+        <ul>
+            {% for story in stories %}
+                <li>
+                    <strong>{{ story.title }}</strong><br>
+                    <p>{{ story.content }}</p>
+                    <p>{{ story.created_at }}</p>
+                    <div class="btn-container">
+                        <form method="POST" action="{% url 'edit_story' story.id %}" style="display: inline;">
+                            {% csrf_token %}
+                            <button class="edit-btn" type="submit">Ozgartirish</button>
+                        </form>
+                        <form method="POST" action="{% url 'delete_story' %}" style="display: inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="story_id" value="{{ story.id }}">
+                            <button class="delete-btn" type="submit">Ochirish</button>
+                        </form>
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

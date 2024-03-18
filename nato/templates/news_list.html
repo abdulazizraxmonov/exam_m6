@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yangiliklar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .news-item {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease-in-out; 
+        }
+        .news-item:hover {
+            transform: scale(1.05); 
+        }
+        .news-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        .news-image {
+            max-width: 100px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            float: left;
+        }
+        .news-content {
+            margin-bottom: 10px;
+            overflow: hidden; 
+        }
+        .news-actions {
+            display: flex;
+            align-items: center;
+            clear: both; 
+        }
+        .news-actions a, .news-actions button {
+            margin-right: 10px;
+            text-decoration: none;
+            color: #007bff;
+            background-color: transparent;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 8px 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .news-actions a:hover, .news-actions button:hover {
+            background-color: #007bff;
+            color: #fff;
+        }
+        .add-news-button {
+            display: block;
+            margin-bottom: 20px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #007bff;
+            border: 1px solid #007bff;
+            border-radius: 5px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        .add-news-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nato yangiliklari</h1>
+    <a href="{% url 'add_news' %}" class="add-news-button">Yangilik qoshish</a>
+    <div class="news-container">
+        {% for news_item in news %}
+        <div class="news-item">
+            {% if news_item.image %}
+            <img class="news-image" src="{{ news_item.image.url }}" alt="{{ news_item.title }}">
+            {% endif %}
+            <h2 class="news-title">{{ news_item.title }}</h2>
+            <p class="news-content">{{ news_item.content }}</p>
+            <div class="news-actions">
+                <a href="{% url 'edit_news' news_item.pk %}">O'zgartirish</a>
+                <form method="post" action="{% url 'delete_news' news_item.pk %}">
+                    {% csrf_token %}
+                    <button type="submit">O'chirish</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

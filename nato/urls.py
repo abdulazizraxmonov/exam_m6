@@ -1,0 +1,30 @@
+from django.urls import path
+from . import views
+
+urlpatterns = [
+    path('', views.index, name='index'), 
+    path('members/', views.members_list, name='members_list'),  
+    path('add_country/', views.add_country_view, name='add_country_view'),  
+    path('members/', views.members_list, name='members_list'),
+    path('edit/<int:country_id>/', views.edit_country_view, name='edit_country'),
+    path('delete/<int:country_id>/', views.delete_country_view, name='delete_country'),
+    path('members/add_country/', views.add_country_view, name='add_country_view'), 
+    path('info/<int:country_id>/', views.country_info, name='country_info'),
+    path('countries/', views.all_countries, name='all_countries'),
+    path('news/', views.news_list, name='news_list'),
+    path('news/', views.news_list, name='news_list'),
+    path('news/<int:pk>/', views.news_detail, name='news_detail'),
+    path('news/add/', views.add_news, name='add_news'),
+    path('news/<int:pk>/edit/', views.edit_news, name='edit_news'),
+    path('news/<int:pk>/delete/', views.delete_news, name='delete_news'),
+    path('news/<int:pk>/', views.news_detail, name='news_detail'),
+    path('info_nato/', views.info_nato_list, name='info_nato_list'),
+    path('info_nato/<int:info_nato_id>/', views.info_nato_detail, name='info_nato_detail'),
+    path('add_info/', views.add_nato_info, name='add_nato_info'),
+    path('edit_info/<int:info_id>/', views.edit_nato_info, name='edit_nato_info'),
+    path('delete_info/<int:info_id>/', views.delete_nato_info, name='delete_nato_info'),
+    path('add_story/', views.add_story, name='add_story'),
+    path('story_list/', views.story_list, name='story_list'),  
+    path('delete_story/', views.delete_story, name='delete_story'),
+    path('edit_story/<int:story_id>/', views.edit_story, name='edit_story'),
+]

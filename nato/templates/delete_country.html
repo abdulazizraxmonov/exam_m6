@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tasdiqlash</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #000; 
+            color: #fff; 
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff; 
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            text-align: center; 
+        }
+        h1 {
+            color: #007bff; 
+            margin-bottom: 20px;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        form {
+            display: inline-block; 
+        }
+        button[type="submit"] {
+            background-color: #dc3545; 
+            color: #fff; 
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+        button[type="submit"]:hover {
+            background-color: #c82333; 
+        }
+        a {
+            color: #007bff; 
+            text-decoration: none;
+            margin-left: 20px; 
+            transition: color 0.3s ease-in-out;
+        }
+        a:hover {
+            color: #0056b3; 
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tasdiqlash</h1>
+        <p>Siz buni rostan ochirmoqchimisiz "{{ country.name }}"?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit" name="delete">HA</button>
+            <a href="{% url 'index' %}">Bekor qilish</a>
+        </form>
+    </div>
+</body>
+</html>
